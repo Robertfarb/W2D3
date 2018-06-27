@@ -35,9 +35,12 @@ RSpec.describe Array do
                                 [3, 4, 5],
                                 [6, 7, 8]] 
                               }
-    
+                              
     it "should transpose the given array" do
       expect(array.my_transpose).to eq([[1, 3], [2, 4]])
+      expect(array2.my_transpose).to eq([[0, 3, 6],
+                                         [1, 4, 7],
+                                         [2, 5, 8]])
     end
     
     it "should not receive transpose" do
@@ -46,4 +49,22 @@ RSpec.describe Array do
     end
   end
   
+  describe "stock_picker" do
+    subject(:array) { array = [1, 2, 3, 4, 5] }
+    subject(:array2) { array2 = [6, 2, 3, 4, 5] }
+    
+    it "should return the pair of days that are most profitable" do
+      expect(array.stock_picker).to eq([3, 4])
+    end
+    
+    it "should return a pair of days that aren't next to eachother" do
+      expect(array2.stock_picker).to eq([0, 4])
+    end
+    
+    it "should return a pair of days that are different" do
+      pair_days = array.stock_picker
+      expect(pair_days[0]).not_to eq(pair_days[1])
+    end    
+  end
+    
 end

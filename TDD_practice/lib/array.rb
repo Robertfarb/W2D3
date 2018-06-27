@@ -35,4 +35,20 @@ class Array
     result
   end
   
+  def stock_picker
+    highest_pair = [0, 1]
+    i = 0
+    while i < self.length
+      j = i + 1
+      while j < self.length
+        current_sum = self[i] + self[j]
+        current_highest_sum = self[highest_pair[0]] + self[highest_pair[1]]
+        highest_pair = [i, j] if current_sum > current_highest_sum
+        j += 1
+      end
+      i += 1
+    end
+    highest_pair
+  end
+  
 end
