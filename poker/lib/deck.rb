@@ -20,9 +20,14 @@ class Deck
     deck
   end
   
+  def shuffle!
+    @card_deck.shuffle!
+  end
+  
 end
 
 if __FILE__ == $PROGRAM_NAME
   deck1 = Deck.new
+  deck1.shuffle
   p deck1.card_deck
 end

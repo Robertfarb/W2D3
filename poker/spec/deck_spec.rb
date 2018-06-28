@@ -19,4 +19,12 @@ RSpec.describe Deck do
       expect(deck.card_deck.all? {|card| card.is_a?(Card)}).to be true
     end
   end
+  
+  describe "#shuffle!" do
+    it "should shuffle the original card deck instance variable" do
+      deck2 = Deck.new
+      deck2.shuffle!
+      expect(deck2.card_deck).not_to eq(deck.card_deck)
+    end
+  end
 end
